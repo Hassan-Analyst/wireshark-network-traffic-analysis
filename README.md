@@ -1,8 +1,17 @@
 # Wireshark Network Traffic Analysis Project
 
 ## Project Overview
-This project demonstrates basic network traffic analysis using Wireshark and Nmap.
-The goal was to capture live traffic, identify normal vs suspicious behavior, and detect a TCP SYN port scan.
+
+This project demonstrates practical network traffic analysis using Wireshark and Nmap in a controlled lab environment.
+
+The objective was to:
+
+- Capture live network traffic
+- Generate a controlled TCP SYN scan
+- Identify open and closed ports through packet inspection
+- Differentiate normal traffic from reconnaissance activity
+
+Through packet-level analysis, a TCP SYN scan was successfully identified and analyzed, including SYN packets, SYN-ACK responses (open port), and RST responses (closed ports).
 
 ## Lab Environment
 - OS: Windows 11
@@ -80,5 +89,29 @@ In contrast, this activity:
 
 This behavior matches known reconnaissance techniques used in the early stages of cyber attacks.
 
-## Conclusion
-This project demonstrates the ability to detect and analyze port scanning activity using Wireshark.
+## Key Findings
+
+- Multiple TCP SYN packets were sent to sequential ports within milliseconds.
+- Port 53 responded with SYN-ACK, confirming it is OPEN.
+- Other scanned ports returned RST-ACK responses, confirming they are CLOSED.
+- The scanning behavior matched the characteristics of a TCP SYN reconnaissance scan.
+- Background HTTPS traffic (port 443) was identified and separated from scan traffic using precise filtering.
+
+This demonstrates the ability to:
+- Interpret TCP handshake behavior
+- Identify reconnaissance techniques
+- Use display filters effectively
+- Distinguish malicious patterns from normal traffic.
+
+## Skills Demonstrated
+
+- Network Traffic Analysis
+- TCP/IP Deep Understanding
+- Wireshark Filtering & Packet Inspection
+- Port State Identification
+- Reconnaissance Detection
+- Documentation & Reporting
+
+---
+
+This project reflects practical SOC-level packet analysis and demonstrates the ability to investigate and interpret suspicious network behavior.
