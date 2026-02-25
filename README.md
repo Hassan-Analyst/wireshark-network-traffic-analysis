@@ -31,9 +31,18 @@ Indicators:
 This behavior is consistent with a TCP SYN port scan.
 
 ## Evidence
-See the `evidence/` folder for screenshots:
-- syn-scan-detection.png
-- protocol-hierarchy.png
+
+### SYN Packets Sent to Multiple Ports
+![SYN Packets](evidence/syn-packets.png)
+
+### SYN-ACK Response (Open Port 53)
+![SYN-ACK Response](evidence/syn-ack-response.png)
+
+### RST Responses (Closed Ports)
+![RST Responses](evidence/rst-closed-ports.png)
+
+### Protocol Hierarchy Overview
+![Protocol Hierarchy](evidence/protocol-hierarchy.png)
 
 ## Skills Demonstrated
 - Packet filtering (tcp.flags.syn == 1 and tcp.flags.ack == 0)
