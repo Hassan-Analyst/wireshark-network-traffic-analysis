@@ -50,5 +50,35 @@ This behavior is consistent with a TCP SYN port scan.
 - Identifying open vs closed ports
 - Understanding SYN, SYN-ACK, and RST responses
 
+## Analysis
+
+### Observed Behavior
+
+During packet inspection, multiple TCP SYN packets were sent from the source host (10.244.28.231) to the gateway (10.244.28.203) targeting multiple destination ports within a very short time interval.
+
+This pattern is consistent with a TCP SYN port scan.
+
+### Port State Determination
+
+The following responses were observed:
+
+- Port 53 returned a SYN-ACK response → This indicates the port is OPEN.
+- Multiple other ports returned RST-ACK responses → These ports are CLOSED.
+
+No long TCP session establishment was observed for closed ports, confirming scanning behavior rather than legitimate service communication.
+
+### Why This Is Suspicious
+
+Normal user activity (web browsing) typically:
+- Connects to a single destination port (usually 443)
+- Communicates with multiple external IP addresses
+
+In contrast, this activity:
+- Targeted a single IP address
+- Attempted connections to many different ports
+- Occurred in rapid succession
+
+This behavior matches known reconnaissance techniques used in the early stages of cyber attacks.
+
 ## Conclusion
 This project demonstrates the ability to detect and analyze port scanning activity using Wireshark.
